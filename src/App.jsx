@@ -1,14 +1,28 @@
-import { useState } from 'react'
-import './App.css'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import { useState } from 'react';
+import './App.css';
+import heroImg from './assets/hero.png';
+import reactLogo from './assets/react.svg';
+import viteLogo from './assets/vite.svg';
+import Register from './Register';
+import { supabase } from './supabaseClient';
 
 function App() {
   const [count, setCount] = useState(0)
+  async function testConnection() 
+  {
+    const { data, error } = await supabase.auth.getUser();
+
+    if (error)
+    {
+      console.log('error communicating with supabase', error.message);
+    } else {
+      console.log('success communicating with supabase', data);
+    }
+  }
 
   return (
     <>
+    
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -17,6 +31,8 @@ function App() {
         </div>
         <div>
           <h1>Game Collection Manager</h1>
+          <button onClick={testConnection}>Test Supabase Connection</button>
+          <Register />
           <p>
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
