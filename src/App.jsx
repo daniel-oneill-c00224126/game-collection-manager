@@ -3,6 +3,7 @@ import './App.css';
 import heroImg from './assets/hero.png';
 import reactLogo from './assets/react.svg';
 import viteLogo from './assets/vite.svg';
+import Login from './Login';
 import Register from './Register';
 import { supabase } from './supabaseClient';
 
@@ -33,6 +34,7 @@ function App() {
           <h1>Game Collection Manager</h1>
           <button onClick={testConnection}>Test Supabase Connection</button>
           <Register />
+          <Login />
           <p>
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
