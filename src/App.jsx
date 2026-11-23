@@ -179,31 +179,6 @@ async function testDeleteGame()
   return (
     <div>
       <h1>Game Collection Manager</h1>
-
-      <button type="button" onClick={testConnection}>
-        Test Supabase Connection
-      </button>
-
-      <button type="button" onClick={testGamesConnection}>
-        Test Games Database Connection
-      </button>
-
-      {user && (
-        <>
-        <button type="button" onClick={testAddGame}>
-          Test Add Game
-        </button>
-
-        <button type="button" onClick={testUpdateGameProgress}>
-          Test Update Game Progress
-        </button>
-
-        <button type="button" onClick={testDeleteGame}>
-          Test Delete Game
-        </button>
-        </>
-      )}
-
       {user ? (
         <Dashboard user={user} />
       ) : (

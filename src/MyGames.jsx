@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import { supabase } from './supabaseClient';
 import './MyGames.css';
 
-function MyGames({ user })
+function MyGames({ user, refreshGames })
 {
     const [games, setGames] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -63,7 +63,7 @@ function MyGames({ user })
         }
         
         loadGames();
-    }, [user.id]);
+}, [user.id, refreshGames]);
 
     if (loading)
     {
