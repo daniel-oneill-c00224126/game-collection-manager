@@ -1,4 +1,5 @@
 import { supabase } from './supabaseClient';
+import MyGames from './MyGames';
 function Dashboard({ user }) 
 {
     const username =user.user_metadata?.username || 'Player';
@@ -23,6 +24,7 @@ function Dashboard({ user })
             <p>Manage your personal game collection here!</p>
             
             <button>My collection</button>
+            <MyGames user={user} />
             <button>Search for games</button>
             <button>My ratings</button>
             <button type="button" onClick={handleLogout}>
