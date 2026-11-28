@@ -34,9 +34,6 @@ function Dashboard({ user })
             <button>My collection</button>
             <MyGames user={user} refreshGames={refreshGames} />
             <SearchGames user={user} onGameAdded={handleGameAdded} />
-            <button>Search for games</button>
-            <button>My ratings</button>
-            <SearchGames user={user} onGameAdded={handleGameAdded} />
             <button type="button" onClick={handleLogout}>
   Logout
 </button>

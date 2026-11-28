@@ -33,3 +33,28 @@
     height: 100%;
     object-fit: cover;
 }
+.game-card select{
+    max-width: 100%;
+    cursor: pointer;
+    color: white;
+    background-color: #242424;
+    border: 1px solid #777;
+    border-radius: 6px;
+    padding: 8px;
+    margin-top: 10px;
+
+}
+.remove-game-button {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    color: #15171c;
+    background-color: #e5e7eb;
+    margin-top: 12px;
+    padding: 12px;
+}
+.remove-game-button:hover {
+    background-color: #d1d5db;
+}

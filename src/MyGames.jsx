@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react';
-import { supabase } from './supabaseClient';
+import { useEffect, useState } from 'react';
 import './MyGames.css';
+import { supabase } from './supabaseClient';
 
 function MyGames({ user, refreshGames })
 {
@@ -64,7 +64,64 @@ function MyGames({ user, refreshGames })
         
         loadGames();
 }, [user.id, refreshGames]);
+////codeblock for dropdown menu to change game status
+async function updateGameStatus(gameId, newStatus)
+{
+  console.log('Updating game:', gameId, 'New status:', newStatus);
+  const { data, error } = await supabase
+    .from('games')
+    .update({ status: newStatus})
+    .eq('id', gameId)
+    .eq('user_id', user.id)
+    .select();
 
+  if (error)
+  {
+    console.error('Error updating game status:', error);
+    return;
+  }
+  if (data.length === 0)
+  {
+    console.log('No game found to update');
+    return;
+  }
+  setGames((currentGames) =>
+    currentGames.map((game) =>
+      game.id === gameId ? { ...game, status: newStatus } : game
+    )
+  );
+  console.log('Success updating game status:', data);
+}
+////late delete game functionality
+async function deleteGame(gameId)
+{
+  const confirmed = window.confirm('Are you sure you want to delete this game?');
+  if (!confirmed)
+  {
+    return;
+  }
+
+  const { data, error} = await supabase
+  .from('games')
+  .delete()
+  .eq('id', gameId)
+  .eq('user_id', user.id)
+  .select();
+
+  if (error)
+  {
+    console.error('Error deleting game:', error);
+    return;
+  }
+  if (data.length === 0)
+  {
+    console.log('No game found to delete');
+    return;
+  }
+  setGames((currentGames) => currentGames.filter((game) => game.id !== gameId)
+);
+console.log('Success deleting game:', data);
+}
     if (loading)
     {
         return <div>Loading games...</div>;
@@ -87,11 +144,28 @@ function MyGames({ user, refreshGames })
           </div>
 
           <h3>{game.title}</h3>
-          <p>Status: {game.status}</p>
+          <label htmlFor={`status-${game.id}`}>Status:</label>
+
+          <select
+            id={'status-' + game.id}
+            value={game.status}
+            onChange={(event) => updateGameStatus(game.id, event.target.value)}
+          >
+          <option value="To Play">To Play</option>
+          <option value="Playing">Playing</option>
+          <option value="Completed">Completed</option>
+          </select>
+          <button
+            type="button"
+             className="remove-game-button"
+             onClick={() => deleteGame(game.id)}
+          >
+            Remove Game
+          </button>
         </div>
-                ))}
-        </div>
-        </div>
+        ))}
+      </div>
+      </div>
     );
 }
 export default MyGames;

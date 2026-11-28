@@ -1,13 +1,14 @@
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
+  --text: #7fb6c7;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --border: #2e303a;
+  --code-bg: #1f2028;
+  --accent: #18d8e6;
+  --accent-bg: rgba(24, 216, 230, 0.1);
+  --accent-border: rgba(24, 216, 230, 0.5);
+  --social-bg: rgba(223, 200, 49, 0.5);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
@@ -17,7 +18,7 @@
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
+  color-scheme: dark;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -37,9 +38,9 @@
     --bg: #16171d;
     --border: #2e303a;
     --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
+    --accent: #18d8e6;
+    --accent-bg: rgba(24, 216, 230, 0.1);
+    --accent-border: rgba(24, 216, 230, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
@@ -52,6 +53,7 @@
 
 body {
   margin: 0;
+  background-color: #16171d;
 }
 
 #root {
@@ -108,4 +110,66 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+.auth-form button
+{
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  color: #15171c;
+  background-color: #e5e7eb;
+  margin-top: 12px;
+  padding: 12px;
+}
+.auth-form button:hover
+{
+  background-color: #d1d5db;
+}
+.auth-form input:focus
+{
+  outline: 2px solid #e5e7eb;
+  border-color: transparent;
+}
+.auth-form input
+{
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: white;
+  background-color: #15171c;
+  border-radius: 6px;
+  border: 1px solid #555b65;
+  padding: 12px;
+}
+.auth-form label
+{
+  color: #e5e7eb;
+  font-size: 15px;
+}
+.auth-form
+{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.auth-card h1,
+.auth-card h2
+{
+  color: white;
+  margin: 0 0 25px;
+  text-align: center;
+  font-size: 26px;
+}
+.auth-card
+{
+  background-color: #1f2028;
+  border-radius: 15px;
+  padding: 25px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  margin: 20px auto;
 }

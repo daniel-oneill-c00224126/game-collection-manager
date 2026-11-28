@@ -24,16 +24,16 @@ function Login()
         alert('Logged in!! Welcome' + data.user.email);
     }
     return(
-        <div>
+        <div className="auth-card">
             <h2>Login</h2>
-            <form onSubmit={handleLogin}>
+            <form className="auth-form" onSubmit={handleLogin}>
                 <label htmlFor="email">Email:</label>
                 <input
                     type="email"
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    requrired
+                    required
                 />
                 <label htmlFor="password">Password:</label>
                 <input

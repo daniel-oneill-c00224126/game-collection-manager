@@ -35,9 +35,9 @@ alert('Registered!!');
 }
 
     return (
-        <div>
+        <div className="auth-card">
             <h1>Register</h1>
-            <form onSubmit={handleRegister}>
+            <form className="auth-form" onSubmit={handleRegister}>
                 <label htmlFor="email">Email:</label>
                 <input
                     type="email"
